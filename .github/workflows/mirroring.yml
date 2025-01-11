@@ -20,7 +20,7 @@ jobs:
       - name: Nix cache
         uses: cachix/install-nix-action@v20
         with:
-          nix-path: nixpkgs=channel:nixos-24.11
+          nix_path: nixpkgs=channel:nixos-24.11
       
       - name: Run tests
         run: nix-shell --run "make tests_run"
@@ -32,6 +32,7 @@ jobs:
           path: ./test/coverage
 
   mirror:
+    needs: [ run_tests ]
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
 
