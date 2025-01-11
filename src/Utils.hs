@@ -69,4 +69,4 @@ computePS ("rr":ls) (Just (a, b)) = computePS ls $ Just (fRr (a, b))
 computePS ("rra":ls) (Just (a, b)) = computePS ls $ Just (fRra (a, b))
 computePS ("rrb":ls) (Just (a, b)) = computePS ls $ Just (fRrb (a, b))
 computePS ("rrr":ls) (Just (a, b)) = computePS ls $ Just (fRrr (a, b))
-computePS _ _ = Nothing 
+computePS _ _ = Nothing
