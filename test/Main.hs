@@ -82,7 +82,7 @@ tesT17 = TestCase (assertEqual "True" True
 
 tesT18 :: Test
 tesT18 = TestCase (assertEqual "True" True
-                   (Utils.areAllHere [] == Nothing))
+                   (Utils.areAllHere [] == Just []))
   
 tesT19 :: Test
 tesT19 = TestCase (assertEqual "True" True
