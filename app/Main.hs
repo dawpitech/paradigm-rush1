@@ -17,7 +17,7 @@ computeExit Nothing = putStrLn  "OK"
 computeExit (Just tuples) = putStrLn $ "KO: " ++ show tuples
 
 checkArgs :: [String] -> IO()
-checkArgs args | (length args) /= 3 = exitWith (ExitFailure 84)
+checkArgs args | (length args) /= 1 = exitWith (ExitFailure 84)
 checkArgs _ = return ()
 
 myNth :: [ a ] -> Int -> a
@@ -29,7 +29,7 @@ main :: IO ()
 main = do
     args <- getArgs
     checkArgs args
-    computeExit $ MyLib.isSorted $ computePS "sa pb pb pb sa pa pa pa" [2,1,3,6,5,8] []
+    computeExit $ computePS ["sa pb pb pb sa pa pa pa"] ([2,1,3,6,5,8], [])
     computeExit $ MyLib.isSorted $ Just ([6, 5, 8], [3, 2, 1])
     computeExit $ MyLib.isSorted $ Just ([], [1, 2, 3, 4 ,5])
     computeExit $ MyLib.isSorted $ Just ([1,2,3,4,5,6], [])

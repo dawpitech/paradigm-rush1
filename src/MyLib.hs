@@ -19,7 +19,9 @@ isSorted (Just (ea:eb:es, [])) | ea <= eb = isSorted $ Just (eb:es, [])
                               | otherwise = Just (eb:es, [])
 isSorted (Just (a, b)) = Just (a, b)
 
-computePS :: [Char] -> [Int] -> [Int] -> Maybe ([Int], [Int])
-computePS [] a b = Just (a, b) 
-computePS _ [] b = Just ([], b) 
---computePS ("sa":s:ls) a b = 
+computePS :: [String] -> ([Int], [Int]) -> Maybe ([Int], [Int])
+computePS [] (a, b) = Just (a, b)
+computePS _ ([], b) = Just ([], b)
+computePS (" ":ls) (a, b) = computePS ls (a, b)
+computePS ("sa":ls) (a, b) = computePS ls (fSa (a, b))
+computePS _ a = Just a
