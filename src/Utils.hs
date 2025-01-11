@@ -5,7 +5,7 @@
 -- uwu
 -}
 
-module Utils (fSa, fSb, fSc, fPa, fPb, fRa, fRb, fRr, fRra, fRrb, fRrr) where
+module Utils (someFunc, isSorted, computePS) where
 
 fSa :: ([Int], [Int]) -> ([Int], [Int])
 fSa ([], b) = ([], b)
@@ -46,3 +46,31 @@ fRrb (a, b) = (av, bv) where (bv, av) = fRra (b, a)
 
 fRrr :: ([Int], [Int]) -> ([Int], [Int])
 fRrr (a, b) = fRrb $ fRra (a, b)
+
+someFunc :: IO ()
+someFunc = putStrLn "someFunc"
+
+isSorted :: Maybe ([Int], [Int]) -> Maybe ([Int], [Int])
+isSorted Nothing = Nothing
+isSorted (Just ([], [])) = Nothing
+isSorted (Just ([_], [])) = Nothing
+isSorted (Just (ea:eb:es, [])) | ea <= eb = isSorted $ Just (eb:es, [])
+                              | otherwise = Just (eb:es, [])
+isSorted (Just (a, b)) = Just (a, b)
+
+computePS :: [String] -> ([Int], [Int]) -> Maybe ([Int], [Int])
+computePS [] (a, b) = Just (a, b)
+computePS _ ([], b) = Just ([], b)
+computePS (" ":ls) (a, b) = computePS ls (a, b)
+computePS ("sa":ls) (a, b) = computePS ls (fSa (a, b))
+computePS ("sb":ls) (a, b) = computePS ls (fSb (a, b))
+computePS ("sc":ls) (a, b) = computePS ls (fSc (a, b))
+computePS ("pa":ls) (a, b) = computePS ls (fPa (a, b))
+computePS ("pb":ls) (a, b) = computePS ls (fPb (a, b))
+computePS ("ra":ls) (a, b) = computePS ls (fRa (a, b))
+computePS ("rb":ls) (a, b) = computePS ls (fRb (a, b))
+computePS ("rr":ls) (a, b) = computePS ls (fRr (a, b))
+computePS ("rra":ls) (a, b) = computePS ls (fRra (a, b))
+computePS ("rrb":ls) (a, b) = computePS ls (fRrb (a, b))
+computePS ("rrr":ls) (a, b) = computePS ls (fRrr (a, b))
+computePS _ a = Just a

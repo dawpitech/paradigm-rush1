@@ -7,10 +7,9 @@
 
 module Main where
 
-import qualified MyLib (someFunc, isSorted, computePS)
+import qualified Utils (someFunc, isSorted, computePS)
 import System.Environment (getArgs)
 import System.Exit
-import MyLib (computePS)
 
 computeExit :: Maybe ([Int], [Int]) -> IO ()
 computeExit Nothing = putStrLn  "OK"
@@ -29,7 +28,7 @@ main :: IO ()
 main = do
     args <- getArgs
     checkArgs args
-    computeExit $ computePS ["sa pb pb pb sa pa pa pa"] ([2,1,3,6,5,8], [])
-    computeExit $ MyLib.isSorted $ Just ([6, 5, 8], [3, 2, 1])
-    computeExit $ MyLib.isSorted $ Just ([], [1, 2, 3, 4 ,5])
-    computeExit $ MyLib.isSorted $ Just ([1,2,3,4,5,6], [])
+    computeExit $ Utils.computePS ["sa pb pb pb sa pa pa pa"] ([2,1,3,6,5,8], [])
+    computeExit $ Utils.isSorted $ Just ([6, 5, 8], [3, 2, 1])
+    computeExit $ Utils.isSorted $ Just ([], [1, 2, 3, 4 ,5])
+    computeExit $ Utils.isSorted $ Just ([1,2,3,4,5,6], [])
