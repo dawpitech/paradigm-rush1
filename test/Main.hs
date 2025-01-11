@@ -11,26 +11,26 @@ import Test.HUnit
 import qualified System.Exit
 
 tesT1 :: Test
-tesT1 = TestCase (assertEqual "True" True (Utils.computePS ["sa"] ([1,2,3,4,5,6], []) /= Nothing))
+tesT1 = TestCase (assertEqual "True" True (Utils.computePS ["sa"]  (Just ([1,2,3,4,5,6], [])) /= Nothing))
 
 tesT2 :: Test
 tesT2 = TestCase (assertEqual "True" True (Utils.isSorted (Utils.computePS
          ["sa", "pb", "pb","pb", "sa", "pa", "pa",
-          "pa"] ([2,1,3,6,5,8], [])) == Nothing))
+          "pa"] (Just ([2,1,3,6,5,8], []))) == Nothing))
 
 tesT3 :: Test
 tesT3 = TestCase (assertEqual "True" True (Utils.isSorted (Utils.computePS
          ["sa", "sb", "sc","pa", "pb", "ra", "rb", "rr", "rra", "rrb",
-          "rrr"] ([2,1,3,6,5,8], [])) /= Nothing))
+          "rrr"] (Just ([2,1,3,6,5,8], []))) /= Nothing))
   
 tesT4 :: Test
-tesT4 = TestCase (assertEqual "True" True (Utils.computePS ["sa"] ([], []) /= Nothing))
+tesT4 = TestCase (assertEqual "True" True (Utils.computePS ["sa"] (Just ([], [])) /= Nothing))
   
 tesT5 :: Test
-tesT5 = TestCase (assertEqual "True" True (Utils.computePS [] ([1,2,6,4,5], []) /= Nothing))
+tesT5 = TestCase (assertEqual "True" True (Utils.computePS [] (Just ([1,2,6,4,5], [])) /= Nothing))
   
 tesT6 :: Test
-tesT6 = TestCase (assertEqual "True" True (Utils.computePS ["sq"] ([5,6,9,8,4,2], []) == Nothing))
+tesT6 = TestCase (assertEqual "True" True (Utils.computePS ["sq"] (Just ([5,6,9,8,4,2], [])) == Nothing))
   
 tesT7 :: Test
 tesT7 = TestCase (assertEqual "True" True (Utils.isSorted Nothing == Nothing))
