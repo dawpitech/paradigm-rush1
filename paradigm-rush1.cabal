@@ -67,7 +67,7 @@ library
     -- other-extensions:
 
     -- Other library packages from which modules are imported.
-    build-depends:    base ^>=4.18.2.1
+    build-depends:    base
 
     -- Directories containing source files.
     hs-source-dirs:   src
@@ -90,7 +90,7 @@ executable pushswap_checker
 
     -- Other library packages from which modules are imported.
     build-depends:
-        base ^>=4.18.2.1,
+        base,
         paradigm-rush1
 
     -- Directories containing source files.
@@ -123,5 +123,5 @@ test-suite pushswap_checker-test
 
     -- Test dependencies.
     build-depends:
-        base ^>=4.18.2.1,
+        base,
         paradigm-rush1
