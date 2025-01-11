@@ -10,6 +10,27 @@ env:
     ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKzKKT5xCssZ38UI5VWaPOqW3ldVsg/0tDceTrCFnsd3 github.action@antoinebellanger.fr
 
 jobs:
+  run_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Nix cache
+        uses: cachix/install-nix-action@v20
+        with:
+          nix-path: nixpkgs=channel:nixos-24.11
+      
+      - name: Run tests
+        uses: nix-shell --run "make tests_run"
+      
+      - name: Store coverage files
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-files
+          path: ./test/coverage
+
   mirror:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
@@ -23,9 +44,19 @@ jobs:
         with:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           known_hosts: $SSH_PUB_KEY
+      
+      - name: Download coverages-files
+        uses: actions/download-artifact@v4
+        with:
+          name: coverage-files
+
+      - name: Fetch git and add coverage files
+        run: |
+          git fetch --unshallow origin
+          git add --force test/coverage/
+          git commit -m "AUTO: added coverage files"
 
       - name: Push to epitech
         run: |
-          git fetch --unshallow origin
           git remote add epitech "${{ secrets.MIRROR_REPO }}"
           git push --force epitech
