@@ -50,6 +50,34 @@ tesT11 = TestCase (assertEqual "True" True (Utils.fRa ([], [1,2]) == ([], [1,2])
 tesT12 :: Test
 tesT12 = TestCase (assertEqual "True" True (Utils.fRa ([1], [1,2,3]) == ([1], [1,2,3])))
   
+tesT13 :: Test
+tesT13 = TestCase (assertEqual "True" True (Utils.readInt ['1','2','a'] == Nothing))
+  
+tesT14 :: Test
+tesT14 = TestCase (assertEqual "True" True (Utils.readInt ['-', '1','2','3'] == (Just (-123))))
+  
+tesT15 :: Test
+tesT15 = TestCase (assertEqual "True" True (Utils.readInt ['1','a','2'] == Nothing))
+  
+tesT16 :: Test
+tesT16 = TestCase (assertEqual "True" True (Utils.bothNothingIfNothing (Nothing, [1,2]) == Nothing))
+  
+tesT17 :: Test
+tesT17 = TestCase (assertEqual "True" True (Utils.bothNothingIfNothing (Just
+                        [1,3], [1,2]) == Just ([1,3], [1,2])))
+
+tesT18 :: Test
+tesT18 = TestCase (assertEqual "True" True (Utils.areAllHere [] == Nothing))
+  
+tesT19 :: Test
+tesT19 = TestCase (assertEqual "True" True (Utils.areAllHere [Just 1] == Just [1]))
+  
+tesT20 :: Test
+tesT20 = TestCase (assertEqual "True" True (Utils.areAllHere [Nothing, Just 1] == Nothing))
+  
+tesT21 :: Test
+tesT21 = TestCase (assertEqual "True" True (Utils.areAllHere [Just 1, Just 2, Just 3] == Just [1,2,3]))
+
 tesTs :: Test
 tesTs = TestList [TestLabel "Already sorted, valid input" tesT1,
                  TestLabel "A few instructions, results in sorted list, valid input" tesT2,
@@ -62,7 +90,16 @@ tesTs = TestList [TestLabel "Already sorted, valid input" tesT1,
                  TestLabel "sa with single value A list" tesT9,
                  TestLabel "pa with empty B list" tesT10,
                  TestLabel "ra with empty A list" tesT11,
-                 TestLabel "ra with single value A list" tesT12]
+                 TestLabel "ra with single value A list" tesT12,
+                 TestLabel "readInt with invalid number" tesT13,
+                 TestLabel "readInt with negative number" tesT14,
+                 TestLabel "readInt with middle invalid number" tesT15,
+                 TestLabel "bothNothingIfNothing with Nothing" tesT16,
+                 TestLabel "bothNothingIfNothing with valid input" tesT17,
+                 TestLabel "areAllHere with Nothing" tesT18,
+                 TestLabel "areAllHere with single value" tesT19,
+                 TestLabel "areAllHere with Nothing as first value" tesT20,
+                 TestLabel "areAllHere with valid values" tesT21]
 
 main :: IO ()
 main = do
