@@ -39,7 +39,7 @@ fRr (a, b) = fRb $ fRa (a, b)
 fRra :: ([Int], [Int]) -> ([Int], [Int])
 fRra ([], b) = ([], b)
 fRra ([a], b) = ([a], b)
-fRra (a, b) = (([last a] ++ (init a)), b)
+fRra (a, b) = ([last a] ++ (init a), b)
 
 fRrb :: ([Int], [Int]) -> ([Int], [Int])
 fRrb (a, b) = (av, bv) where (bv, av) = fRra (b, a)
