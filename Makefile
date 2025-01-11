@@ -14,7 +14,7 @@ all: $(NAME)
 
 $(NAME):
 	cabal build
-	@ cp "$(BUILD_FOLDER)/x/$(NAME)/build/$(NAME)/$(NAME)" .
+	@ cp $(BUILD_FOLDER)/x/$(NAME)/build/$(NAME)/$(NAME) .
 
 clean:
 	@ cabal clean
