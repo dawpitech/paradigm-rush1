@@ -5,7 +5,7 @@
 -- caca
 -}
 
-module MyLib (someFunc, isSorted) where
+module MyLib (someFunc, isSorted, computePS) where
 
 someFunc :: IO ()
 someFunc = putStrLn "someFunc"
@@ -17,3 +17,8 @@ isSorted (Just ([_], [])) = Nothing
 isSorted (Just (ea:eb:es, [])) | ea <= eb = isSorted $ Just (eb:es, [])
                               | otherwise = Just (eb:es, [])
 isSorted (Just (a, b)) = Just (a, b)
+
+computePS :: [Char] -> [Int] -> [Int] -> Maybe ([Int], [Int])
+computePS [] a b = Just (a, b) 
+computePS _ [] b = Just ([], b) 
+computePS ("sa":s:ls) a b | s /= ' ' || 
