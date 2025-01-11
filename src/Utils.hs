@@ -74,7 +74,7 @@ computePS ("rrr":ls) (Just (a, b)) = computePS ls $ Just (fRrr (a, b))
 computePS _ _ = Nothing
 
 areAllHere :: [Maybe Int] -> Maybe [Int]
-areAllHere [] = Nothing
+areAllHere [] = Just [] 
 areAllHere [Just a] = Just [a]
 areAllHere (Nothing:_) = Nothing
 areAllHere ((Just a):bs) = areAllHere bs >>= (\r -> Just (a : r))
