@@ -7,7 +7,7 @@
 
 NAME = pushswap_checker
 
-BUILD_FOLDER = ./dist-newstyle/build/x86_64-linux/ghc-9.6.6/*
+BUILD_FOLDER = ./dist-newstyle/build/x86_64-linux/*/*
 CABAL_LOCAL = "ignore-project: False\ncoverage: True\nlibrary-coverage: True"
 
 all: $(NAME)
