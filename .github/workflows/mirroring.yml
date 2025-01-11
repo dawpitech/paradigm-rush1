@@ -23,7 +23,7 @@ jobs:
           nix-path: nixpkgs=channel:nixos-24.11
       
       - name: Run tests
-        uses: nix-shell --run "make tests_run"
+        run: nix-shell --run "make tests_run"
       
       - name: Store coverage files
         uses: actions/upload-artifact@v4
