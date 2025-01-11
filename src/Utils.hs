@@ -5,7 +5,7 @@
 -- uwu
 -}
 
-module Utils where
+module Utils (fSa, fSb, fSc, fPa, fPb, fRa, fRb, fRr, fRra, fRrb, fRrr) where
 
 fSa :: ([Int], [Int]) -> ([Int], [Int])
 fSa ([], b) = ([], b)

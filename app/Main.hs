@@ -22,7 +22,6 @@ checkArgs _ = return ()
 
 myNth :: [ a ] -> Int -> a
 myNth [a] _ = a
-myNth [] _ = 0
 myNth (a:as) 0 = a
 myNth (a:as) b = myNth as (b - 1)
 
@@ -30,7 +29,7 @@ main :: IO ()
 main = do
     args <- getArgs
     checkArgs args
-    computeExit $ MyLib.isSorted $ computePS ["sa pb pb pb sa pa pa pa"] [2,1,3,6,5,8] []
+    computeExit $ MyLib.isSorted $ computePS "sa pb pb pb sa pa pa pa" [2,1,3,6,5,8] []
     computeExit $ MyLib.isSorted $ Just ([6, 5, 8], [3, 2, 1])
     computeExit $ MyLib.isSorted $ Just ([], [1, 2, 3, 4 ,5])
     computeExit $ MyLib.isSorted $ Just ([1,2,3,4,5,6], [])

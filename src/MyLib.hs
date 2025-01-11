@@ -6,6 +6,7 @@
 -}
 
 module MyLib (someFunc, isSorted, computePS) where
+import Utils (fSa, fSb, fSc, fPa, fPb, fRa, fRb, fRr, fRra, fRrb, fRrr)
 
 someFunc :: IO ()
 someFunc = putStrLn "someFunc"
@@ -21,4 +22,4 @@ isSorted (Just (a, b)) = Just (a, b)
 computePS :: [Char] -> [Int] -> [Int] -> Maybe ([Int], [Int])
 computePS [] a b = Just (a, b) 
 computePS _ [] b = Just ([], b) 
-computePS ("sa":s:ls) a b | s /= ' ' || 
+--computePS ("sa":s:ls) a b = 
