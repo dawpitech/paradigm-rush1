@@ -7,7 +7,7 @@
 
 module Main where
 
-import qualified Utils (someFunc, isSorted, computePS)
+import qualified Utils (isSorted, computePS)
 import System.Environment (getArgs)
 import System.Exit
 
@@ -18,11 +18,6 @@ computeExit (Just tuples) = putStrLn $ "KO: " ++ show tuples
 checkArgs :: [String] -> IO()
 checkArgs args | (length args) /= 1 = exitWith (ExitFailure 84)
 checkArgs _ = return ()
-
-myNth :: [ a ] -> Int -> a
-myNth [a] _ = a
-myNth (a:as) 0 = a
-myNth (a:as) b = myNth as (b - 1)
 
 main :: IO ()
 main = do

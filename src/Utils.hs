@@ -5,7 +5,7 @@
 -- uwu
 -}
 
-module Utils (someFunc, isSorted, computePS) where
+module Utils (isSorted, computePS) where
 
 fSa :: ([Int], [Int]) -> ([Int], [Int])
 fSa ([], b) = ([], b)
@@ -46,9 +46,6 @@ fRrb (a, b) = (av, bv) where (bv, av) = fRra (b, a)
 
 fRrr :: ([Int], [Int]) -> ([Int], [Int])
 fRrr (a, b) = fRrb $ fRra (a, b)
-
-someFunc :: IO ()
-someFunc = putStrLn "someFunc"
 
 isSorted :: Maybe ([Int], [Int]) -> Maybe ([Int], [Int])
 isSorted Nothing = Nothing
