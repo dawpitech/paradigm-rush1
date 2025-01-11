@@ -32,3 +32,17 @@ fRa (a:as, b) = (as++[a], b)
 
 fRb :: ([Int], [Int]) -> ([Int], [Int])
 fRb (a, b) = (av, bv) where (bv, av) = fRa (b, a)
+
+fRr :: ([Int], [Int]) -> ([Int], [Int])
+fRr (a, b) = fRb $ fRa (a, b)
+
+fRra :: ([Int], [Int]) -> ([Int], [Int])
+fRra ([], b) = ([], b)
+fRra ([a], b) = ([a], b)
+fRra (a, b) = (([last a] ++ (init a)), b)
+
+fRrb :: ([Int], [Int]) -> ([Int], [Int])
+fRrb (a, b) = (av, bv) where (bv, av) = fRra (b, a)
+
+fRrr :: ([Int], [Int]) -> ([Int], [Int])
+fRrr (a, b) = fRrb $ fRra (a, b)
