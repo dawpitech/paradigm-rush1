@@ -38,6 +38,18 @@ tesT7 = TestCase (assertEqual "True" True (Utils.isSorted Nothing == Nothing))
 tesT8 :: Test
 tesT8 = TestCase (assertEqual "True" True (Utils.isSorted (Just([], [])) == Nothing))
   
+tesT9 :: Test
+tesT9 = TestCase (assertEqual "True" True (Utils.fSa ([1], [1,2]) == ([1], [1,2])))
+  
+tesT10 :: Test
+tesT10 = TestCase (assertEqual "True" True (Utils.fPa ([1,2], []) == ([1,2], [])))
+  
+tesT11 :: Test
+tesT11 = TestCase (assertEqual "True" True (Utils.fRa ([], [1,2]) == ([], [1,2])))
+  
+tesT12 :: Test
+tesT12 = TestCase (assertEqual "True" True (Utils.fRa ([1], [1,2,3]) == ([1], [1,2,3])))
+  
 tesTs :: Test
 tesTs = TestList [TestLabel "Already sorted, valid input" tesT1,
                  TestLabel "A few instructions, results in sorted list, valid input" tesT2,
@@ -46,7 +58,11 @@ tesTs = TestList [TestLabel "Already sorted, valid input" tesT1,
                  TestLabel "Empty instruction String" tesT5,
                  TestLabel "Invalid instruction" tesT6,
                  TestLabel "isSorted with Nothing" tesT7,
-                 TestLabel "isSorted with empty lists" tesT8]
+                 TestLabel "isSorted with empty lists" tesT8,
+                 TestLabel "sa with single value A list" tesT9,
+                 TestLabel "pa with empty B list" tesT10,
+                 TestLabel "ra with empty A list" tesT11,
+                 TestLabel "ra with single value A list" tesT12]
 
 main :: IO ()
 main = do

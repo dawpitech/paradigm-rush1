@@ -5,7 +5,7 @@
 -- uwu
 -}
 
-module Utils (isSorted, computePS) where
+module Utils (isSorted, computePS, fSa, fPa, fRa, fRra) where
 
 fSa :: ([Int], [Int]) -> ([Int], [Int])
 fSa ([], b) = ([], b)
