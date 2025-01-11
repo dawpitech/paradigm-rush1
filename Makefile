@@ -27,7 +27,7 @@ tests_run:
 	@ echo -e  $(CABAL_LOCAL) > cabal.project.local
 	cabal test
 	@ mkdir -p ./test/coverage
-	@ find . -type f -name "*.tix" -exec cp {} test/coverage \; 
+	@ find . -type f -name "*.tix" -exec cp {} test/coverage \;
 
 re: fclean all
 
