@@ -7,14 +7,14 @@
 
 NAME = pushswap_checker
 
-BUILD_FOLDER = ./dist-newstyle/build/x86_64-linux/*/*
+BINARY_LOCATION = $(shell cabal list-bin pushswap_checker)
 CABAL_LOCAL = "ignore-project: False\ncoverage: True\nlibrary-coverage: True"
 
 all: $(NAME)
 
 $(NAME):
 	cabal build
-	@ cp $(BUILD_FOLDER)/x/$(NAME)/build/$(NAME)/$(NAME) .
+	cp $(BINARY_LOCATION) .
 
 clean:
 	@ cabal clean
@@ -27,7 +27,7 @@ tests_run:
 	@ echo -e  $(CABAL_LOCAL) > cabal.project.local
 	cabal test
 	@ mkdir -p ./test/coverage
-	@ cp $(BUILD_FOLDER)/t/$(NAME)-test/hpc/vanilla/tix/*.tix ./test/coverage/
+	@ find . -type f -name "*.tix" -exec cp {} test/coverage \; 
 
 re: fclean all
 
