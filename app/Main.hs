@@ -12,5 +12,6 @@ main = do
     args <- getArgs
     computeExit $ MyLib.isSorted $ Just ([6, 5, 8], [3, 2, 1])
     computeExit $ MyLib.isSorted $ Just ([], [1, 2, 3, 4 ,5])
+    computeExit $ MyLib.isSorted $ Just ([1,2,3,4,5,6], [])
     putStrLn "Hello, Haskell!"
     MyLib.someFunc
