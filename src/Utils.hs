@@ -69,4 +69,4 @@ computePS ("rr":ls) (a, b) = computePS ls (fRr (a, b))
 computePS ("rra":ls) (a, b) = computePS ls (fRra (a, b))
 computePS ("rrb":ls) (a, b) = computePS ls (fRrb (a, b))
 computePS ("rrr":ls) (a, b) = computePS ls (fRrr (a, b))
-computePS _ a = Just a
+computePS _ _ = Nothing 
