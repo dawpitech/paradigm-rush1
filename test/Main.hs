@@ -11,7 +11,8 @@ import Test.HUnit
 import qualified System.Exit
 
 tesT1 :: Test
-tesT1 = TestCase (assertEqual "True" True (Utils.computePS ["sa"]  (Just ([1,2,3,4,5,6], [])) /= Nothing))
+tesT1 = TestCase (assertEqual "True" True (Utils.computePS ["sa"]
+                              (Just ([1,2,3,4,5,6], [])) /= Nothing))
 
 tesT2 :: Test
 tesT2 = TestCase (assertEqual "True" True (Utils.isSorted (Utils.computePS
@@ -24,59 +25,76 @@ tesT3 = TestCase (assertEqual "True" True (Utils.isSorted (Utils.computePS
           "rrr"] (Just ([2,1,3,6,5,8], []))) /= Nothing))
   
 tesT4 :: Test
-tesT4 = TestCase (assertEqual "True" True (Utils.computePS ["sa"] (Just ([], [])) /= Nothing))
+tesT4 = TestCase (assertEqual "True" True (Utils.computePS ["sa"]
+                                           (Just ([], [])) /= Nothing))
   
 tesT5 :: Test
-tesT5 = TestCase (assertEqual "True" True (Utils.computePS [] (Just ([1,2,6,4,5], [])) /= Nothing))
+tesT5 = TestCase (assertEqual "True" True (Utils.computePS []
+                                         (Just ([1,2,6,4,5], [])) /= Nothing))
   
 tesT6 :: Test
-tesT6 = TestCase (assertEqual "True" True (Utils.computePS ["sq"] (Just ([5,6,9,8,4,2], [])) == Nothing))
+tesT6 = TestCase (assertEqual "True" True (Utils.computePS ["sq"]
+                                       (Just ([5,6,9,8,4,2], [])) == Nothing))
   
 tesT7 :: Test
 tesT7 = TestCase (assertEqual "True" True (Utils.isSorted Nothing == Nothing))
   
 tesT8 :: Test
-tesT8 = TestCase (assertEqual "True" True (Utils.isSorted (Just([], [])) == Nothing))
+tesT8 = TestCase (assertEqual "True" True (Utils.isSorted
+                                           (Just([], [])) == Nothing))
   
 tesT9 :: Test
-tesT9 = TestCase (assertEqual "True" True (Utils.fSa ([1], [1,2]) == ([1], [1,2])))
+tesT9 = TestCase (assertEqual "True" True
+                  (Utils.fSa ([1], [1,2]) == ([1], [1,2])))
   
 tesT10 :: Test
-tesT10 = TestCase (assertEqual "True" True (Utils.fPa ([1,2], []) == ([1,2], [])))
+tesT10 = TestCase (assertEqual "True" True
+                   (Utils.fPa ([1,2], []) == ([1,2], [])))
   
 tesT11 :: Test
-tesT11 = TestCase (assertEqual "True" True (Utils.fRa ([], [1,2]) == ([], [1,2])))
+tesT11 = TestCase (assertEqual "True" True
+                   (Utils.fRa ([], [1,2]) == ([], [1,2])))
   
 tesT12 :: Test
-tesT12 = TestCase (assertEqual "True" True (Utils.fRa ([1], [1,2,3]) == ([1], [1,2,3])))
+tesT12 = TestCase (assertEqual "True" True
+                   (Utils.fRa ([1], [1,2,3]) == ([1], [1,2,3])))
   
 tesT13 :: Test
-tesT13 = TestCase (assertEqual "True" True (Utils.readInt ['1','2','a'] == Nothing))
+tesT13 = TestCase (assertEqual "True" True
+                   (Utils.readInt ['1','2','a'] == Nothing))
   
 tesT14 :: Test
-tesT14 = TestCase (assertEqual "True" True (Utils.readInt ['-', '1','2','3'] == (Just (-123))))
+tesT14 = TestCase (assertEqual "True" True
+                   (Utils.readInt ['-', '1','2','3'] == (Just (-123))))
   
 tesT15 :: Test
-tesT15 = TestCase (assertEqual "True" True (Utils.readInt ['1','a','2'] == Nothing))
+tesT15 = TestCase (assertEqual "True" True
+                   (Utils.readInt ['1','a','2'] == Nothing))
   
 tesT16 :: Test
-tesT16 = TestCase (assertEqual "True" True (Utils.bothNothingIfNothing (Nothing, [1,2]) == Nothing))
+tesT16 = TestCase (assertEqual "True" True
+                   (Utils.bothNothingIfNothing (Nothing, [1,2]) == Nothing))
   
 tesT17 :: Test
-tesT17 = TestCase (assertEqual "True" True (Utils.bothNothingIfNothing (Just
+tesT17 = TestCase (assertEqual "True" True
+                   (Utils.bothNothingIfNothing (Just
                         [1,3], [1,2]) == Just ([1,3], [1,2])))
 
 tesT18 :: Test
-tesT18 = TestCase (assertEqual "True" True (Utils.areAllHere [] == Nothing))
+tesT18 = TestCase (assertEqual "True" True
+                   (Utils.areAllHere [] == Nothing))
   
 tesT19 :: Test
-tesT19 = TestCase (assertEqual "True" True (Utils.areAllHere [Just 1] == Just [1]))
+tesT19 = TestCase (assertEqual "True" True
+                   (Utils.areAllHere [Just 1] == Just [1]))
   
 tesT20 :: Test
-tesT20 = TestCase (assertEqual "True" True (Utils.areAllHere [Nothing, Just 1] == Nothing))
+tesT20 = TestCase (assertEqual "True" True
+                   (Utils.areAllHere [Nothing, Just 1] == Nothing))
   
 tesT21 :: Test
-tesT21 = TestCase (assertEqual "True" True (Utils.areAllHere [Just 1, Just 2, Just 3] == Just [1,2,3]))
+tesT21 = TestCase (assertEqual "True" True
+                   (Utils.areAllHere [Just 1, Just 2, Just 3] == Just [1,2,3]))
 
 tesTs :: Test
 tesTs = TestList [TestLabel "Already sorted, valid input" tesT1,
@@ -104,4 +122,5 @@ tesTs = TestList [TestLabel "Already sorted, valid input" tesT1,
 main :: IO ()
 main = do
     result <- runTestTT tesTs
-    if failures result > 0 then System.Exit.exitFailure else System.Exit.exitSuccess
+    if failures result > 0 then System.Exit.exitFailure
+      else System.Exit.exitSuccess

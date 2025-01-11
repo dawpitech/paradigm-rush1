@@ -25,4 +25,5 @@ main = do
     instr <- getLine
     args <- getArgs
     checkOutput $ Utils.computePS (words instr)
-      $ Utils.bothNothingIfNothing (Utils.areAllHere (fmap Utils.readInt args), [])
+     $ Utils.bothNothingIfNothing (Utils.areAllHere
+                                   (fmap Utils.readInt args), [])
