@@ -59,7 +59,6 @@ isSorted (Just (a, b)) = Just (a, b)
 
 computePS :: [String] -> Maybe ([Int], [Int]) -> Maybe ([Int], [Int])
 computePS [] (Just (a, b)) = Just (a, b)
-computePS _ (Just ([], b)) = Just ([], b)
 computePS ("sa":ls) (Just (a, b)) = computePS ls $ Just (fSa (a, b))
 computePS ("sb":ls) (Just (a, b)) = computePS ls $ Just (fSb (a, b))
 computePS ("sc":ls) (Just (a, b)) = computePS ls $ Just (fSc (a, b))
